@@ -160,9 +160,14 @@ This project is intended for educational, research, and authorized security moni
 
 ## 👨‍💻 Author
 
-Narasimha Balla
+-> Narasimha Balla
 
 Cybersecurity Enthusiast | Python Developer | Security Researcher
+
+->Anusha Ganisetti
+
+Web Developer | UI Designer | Frontend Contributor
+
 
 ---
 
