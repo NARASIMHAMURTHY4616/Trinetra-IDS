@@ -158,7 +158,7 @@ This project is intended for educational, research, and authorized security moni
 
 ---
 
-## 👨‍💻 Author
+## 👨‍💻 Authors
 
 -> Narasimha Balla
 
