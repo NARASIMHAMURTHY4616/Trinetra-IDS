@@ -1,33 +1,35 @@
-
-
 # 🔱 Trinetra IDS
 
-Trinetra IDS is a real-time Network Intrusion Detection System (IDS) designed to monitor network traffic, analyze packets, detect suspicious activities, and generate actionable security alerts.
+Trinetra IDS is a modular Network Intrusion Detection System (IDS) designed to capture, analyze, and inspect network traffic in real time. Built with extensibility in mind, Trinetra provides a foundation for protocol analysis, threat detection, alert generation, and future AI-assisted security analytics.
 
-Inspired by the concept of **Trinetra (The Three Eyes)**, the project aims to provide visibility into network communications and help identify potential security threats in real time.
+Inspired by **Trinetra (The Three Eyes)**, the project aims to observe network activity, detect suspicious behavior, and provide actionable security visibility.
 
 ---
 
 ## 🚀 Features
 
 - Real-time packet capture using Scapy
+- IPv4 and IPv6 support
 - TCP, UDP, ICMP, and DNS traffic analysis
 - Source and destination IP tracking
-- Port and service identification
+- Service and port identification
 - DNS query extraction
-- Protocol statistics generation
-- Packet metadata collection
-- Live packet monitoring dashboard support
-- Export-ready packet storage
-- Modular architecture for future IDS enhancements
+- Protocol-based traffic classification
+- Modular detection engine
+- Rule-based analysis architecture
+- Alert generation framework
+- Dashboard-ready packet storage
+- Extensible design for ML and AI integration
 
 ---
 
-## 📊 Captured Information
+## 📊 Packet Information Collected
 
-For each packet, Trinetra IDS extracts:
+For every captured packet:
 
+- Packet ID
 - Timestamp
+- IP Version (IPv4 / IPv6)
 - Source IP Address
 - Destination IP Address
 - Protocol
@@ -41,22 +43,35 @@ For each packet, Trinetra IDS extracts:
 
 ---
 
-## 🏗️ Project Architecture
+## 🏗️ Architecture
 
 ```text
 Network Traffic
         │
         ▼
-Packet Capture Engine
+Capture Layer
+(net_sniffer.py)
         │
         ▼
-Packet Analyzer
+Analysis Engine
+(engine.py)
         │
         ▼
-Packet Storage
+Protocol Routers
         │
-        ├── UI Packet Buffer
-        └── Export Packet Storage
+ ┌──────┼──────┐
+ ▼      ▼      ▼
+TCP    UDP    ICMP
+Rules  Rules  Rules
+        │
+        ▼
+Alert Generation
+        │
+        ▼
+Alert Database
+        │
+        ▼
+Dashboard / Reports
 ```
 
 ---
@@ -64,14 +79,33 @@ Packet Storage
 ## 📂 Project Structure
 
 ```text
-trinetra-ids/
+Trinetra-IDS/
 │
-├── prototype.py
-├── dashboard/
-├── detection/
-├── alerts/
+├── capture/
+│   └── net_sniffer.py
+│
+├── config/
+│   └── rules.json
+│
 ├── database/
-├── reports/
+│   └── alerts.db
+│
+├── rules/
+│   ├── tcp.py
+│   ├── udp.py
+│   ├── icmp.py
+│   └── unknown.py
+│
+├── static/
+│   ├── style.css
+│   └── script.js
+│
+├── templates/
+│   └── dashboard.html
+│
+├── engine.py
+├── main.py
+├── requirements.txt
 └── README.md
 ```
 
@@ -81,96 +115,118 @@ trinetra-ids/
 
 - Python
 - Scapy
-- Streamlit
+- SQLite
+- Flask (Planned Dashboard Integration)
+- HTML
+- CSS
+- JavaScript
 - Threading
-- Collections
-- Datetime
 
 ---
 
 ## 🔍 Current Capabilities
 
-### Packet Capture
+### Network Packet Capture
 
-Captures packets in real time and processes them for analysis.
+Captures and processes network packets in real time.
 
-### Protocol Detection
+### Protocol Analysis
 
-Supports:
+Currently supports:
 
 - TCP
 - UDP
 - ICMP
 - DNS
 
-### Service Identification
-
-Recognizes common services:
+### Service Detection
 
 | Port | Service |
 |--------|---------|
+| 21 | FTP |
+| 22 | SSH |
+| 53 | DNS |
 | 80 | HTTP |
 | 443 | HTTPS |
-| 53 | DNS |
-| 22 | SSH |
-| 21 | FTP |
+
+### Packet Routing Engine
+
+Routes packets to protocol-specific analysis modules for efficient inspection.
 
 ---
 
-## 📈 Future Roadmap
+## 🗺️ Development Roadmap
 
-### Trinetra IDS v0.2
+### Phase 1 – Core IDS Engine
 
-- Port Scan Detection
-- SSH Brute Force Detection
-- DNS Tunneling Detection
-- Alert Management System
-- Threat Intelligence Integration
+- [x] Packet Capture Engine
+- [x] Packet Analysis Engine
+- [x] IPv4 Support
+- [x] IPv6 Support
+- [x] Protocol Routing
+- [x] Modular Rule System
+- [ ] Alert Database Integration
+- [ ] Dashboard Integration
 
-### Trinetra IDS v1.0
+### Phase 2 – Detection Rules
 
-- Real-time Dashboard
-- MITRE ATT&CK Mapping
-- Incident Reporting
-- Risk Scoring Engine
-- IOC Detection
+- [ ] SSH Activity Detection
+- [ ] SYN Scan Detection
+- [ ] Port Scan Detection
+- [ ] ICMP Sweep Detection
+- [ ] DNS Anomaly Detection
+- [ ] Alert Severity Classification
 
-### Trinetra-X
+### Phase 3 – Advanced Security Analytics
 
-Future integration with Netra-X to provide:
+- [ ] Threat Intelligence Integration
+- [ ] IOC Detection
+- [ ] MITRE ATT&CK Mapping
+- [ ] Automated Incident Reports
+- [ ] Risk Scoring Engine
 
-- Automated Python file analysis
-- Suspicious file detection
-- Security risk assessment
-- Unified threat visibility
+### Phase 4 – Trinetra-X Integration
+
+Integration with Netra-X:
+
+- Python Source Code Analysis
+- Malicious Script Detection
+- Security Risk Assessment
+- Unified Security Dashboard
 
 ---
 
-## 🎯 Project Goal
+## 🎯 Vision
 
-The goal of Trinetra IDS is to evolve from a packet monitoring tool into a complete intrusion detection platform capable of identifying network threats and providing actionable security insights.
+Trinetra aims to evolve from a packet monitoring solution into a complete cybersecurity platform capable of:
+
+- Detecting network threats
+- Generating security alerts
+- Assisting incident response
+- Integrating AI/ML-driven threat analysis
+- Providing unified visibility across network and code security domains
+
+---
+
+## 👥 Contributors
+
+### 🔐 Narasimha Balla
+Cybersecurity Engineer • Project Lead • Detection Engine Development
+
+### 💻 Anusha Ganisetti
+Frontend Developer • UI/UX Design • Dashboard Development
+
+### 🤖 ML Contributor
+Machine Learning Integration • Traffic Analytics • Threat Classification
 
 ---
 
 ## ⚠️ Disclaimer
 
-This project is intended for educational, research, and authorized security monitoring purposes only. Users are responsible for complying with applicable laws and regulations.
-
----
-
-## 👨‍💻 Authors
-
--> Narasimha Balla
-
-Cybersecurity Enthusiast | Python Developer | Security Researcher
-
-->Anusha Ganisetti
-
-Web Developer | UI Designer | Frontend Contributor
-
+This project is intended solely for educational, research, and authorized security monitoring purposes. Users are responsible for ensuring compliance with applicable laws, regulations, and organizational policies.
 
 ---
 
 ## ⭐ Support
 
-If you find this project useful, consider giving it a star on GitHub.
+If you find this project useful, consider starring the repository and contributing to its development.
