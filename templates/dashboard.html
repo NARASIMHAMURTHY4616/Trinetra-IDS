@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trinetra IDS Dashboard</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI,sans-serif;
+}
+
+body{
+    background:#0d1117;
+    color:#e6edf3;
+    padding:20px;
+}
+
+.header{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.header h1{
+    color:#00e5ff;
+    font-size:2.5rem;
+}
+
+.header p{
+    color:#8b949e;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+    margin-bottom:25px;
+}
+
+.card{
+    background:#161b22;
+    padding:20px;
+    border-radius:12px;
+    border-left:5px solid #00e5ff;
+}
+
+.card h3{
+    color:#8b949e;
+    margin-bottom:10px;
+}
+
+.card h2{
+    color:#00e5ff;
+}
+
+.section{
+    background:#161b22;
+    padding:20px;
+    border-radius:12px;
+    margin-bottom:20px;
+}
+
+.section h2{
+    margin-bottom:15px;
+    color:#00e5ff;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th{
+    background:#21262d;
+    padding:12px;
+}
+
+td{
+    padding:10px;
+    border-bottom:1px solid #30363d;
+    text-align:center;
+}
+
+.alert{
+    padding:12px;
+    margin-bottom:10px;
+    border-radius:8px;
+    font-weight:bold;
+}
+
+.high{
+    background:#7f1d1d;
+}
+
+.medium{
+    background:#854d0e;
+}
+
+.low{
+    background:#1e3a8a;
+}
+
+.trinetra{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.eye{
+    background:#21262d;
+    padding:20px;
+    text-align:center;
+    border-radius:10px;
+}
+
+.eye h3{
+    color:#00e5ff;
+    margin-bottom:10px;
+}
+
+.status{
+    color:#22c55e;
+    font-weight:bold;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+    <h1>🔱 TRINETRA IDS</h1>
+    <p>Real-Time Intrusion Detection System</p>
+</div>
+
+<div class="cards">
+
+    <div class="card">
+        <h3>Total Packets</h3>
+        <h2>12,548</h2>
+    </div>
+
+    <div class="card">
+        <h3>TCP Packets</h3>
+        <h2>8,123</h2>
+    </div>
+
+    <div class="card">
+        <h3>UDP Packets</h3>
+        <h2>2,431</h2>
+    </div>
+
+    <div class="card">
+        <h3>Alerts</h3>
+        <h2>17</h2>
+    </div>
+
+</div>
+
+<div class="section">
+    <h2>🔱 Three Eyes of Trinetra</h2>
+
+    <div class="trinetra">
+
+        <div class="eye">
+            <h3>Eye 1</h3>
+            <p>Packet Capture</p>
+            <p class="status">ACTIVE</p>
+        </div>
+
+        <div class="eye">
+            <h3>Eye 2</h3>
+            <p>Traffic Analysis</p>
+            <p class="status">ACTIVE</p>
+        </div>
+
+        <div class="eye">
+            <h3>Eye 3</h3>
+            <p>Threat Detection</p>
+            <p class="status">ACTIVE</p>
+        </div>
+
+    </div>
+</div>
+
+<div class="section">
+    <h2>📡 Live Traffic Monitor</h2>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Time</th>
+            <th>Source IP</th>
+            <th>Destination IP</th>
+            <th>Protocol</th>
+            <th>Service</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+        <tr>
+            <td>12:01:03</td>
+            <td>192.168.1.100</td>
+            <td>142.250.182.14</td>
+            <td>TCP</td>
+            <td>HTTPS</td>
+        </tr>
+
+        <tr>
+            <td>12:01:08</td>
+            <td>192.168.1.100</td>
+            <td>8.8.8.8</td>
+            <td>UDP</td>
+            <td>DNS</td>
+        </tr>
+
+        <tr>
+            <td>12:01:15</td>
+            <td>10.0.0.5</td>
+            <td>192.168.1.1</td>
+            <td>ICMP</td>
+            <td>-</td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+
+<div class="section">
+    <h2>🚨 Security Alerts</h2>
+
+    <div class="alert high">
+        HIGH - Potential Port Scan Detected
+    </div>
+
+    <div class="alert medium">
+        MEDIUM - Excessive SYN Traffic
+    </div>
+
+    <div class="alert low">
+        LOW - SSH Activity Observed
+    </div>
+
+</div>
+
+<div class="section">
+    <h2>📊 Protocol Statistics</h2>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Protocol</th>
+            <th>Count</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+            <td>TCP</td>
+            <td>8123</td>
+        </tr>
+
+        <tr>
+            <td>UDP</td>
+            <td>2431</td>
+        </tr>
+
+        <tr>
+            <td>ICMP</td>
+            <td>1994</td>
+        </tr>
+        </tbody>
+
+    </table>
+</div>
+
+</body>
+</html>
