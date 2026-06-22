@@ -3,69 +3,136 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Trinetra IDS Dashboard</title>
+<title>Trinetra IDS</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
+
+:root{
+    --bg:#050816;
+    --panel:#0f172a;
+    --border:#1e293b;
+    --cyan:#00e5ff;
+    --green:#22c55e;
+    --yellow:#facc15;
+    --orange:#fb923c;
+    --red:#ef4444;
+    --text:#e2e8f0;
+}
+
 *{
-    margin:10;
+    margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Segoe UI,sans-serif;
 }
 
 body{
-    background:#0d1117;
-    color:#e6edf3;
-    padding:20px;
+    background:var(--bg);
+    color:var(--text);
+    font-family:Inter,sans-serif;
+    display:flex;
 }
 
-.header{
-    text-align:center;
+.sidebar{
+    width:260px;
+    height:100vh;
+    background:#020617;
+    border-right:1px solid var(--border);
+    padding:25px;
+    position:fixed;
+}
+
+.logo{
+    font-family:Orbitron;
+    color:var(--cyan);
+    font-size:28px;
+    margin-bottom:40px;
+}
+
+.nav a{
+    display:block;
+    text-decoration:none;
+    color:#94a3b8;
+    padding:14px;
+    border-radius:10px;
+    margin-bottom:10px;
+    transition:.3s;
+}
+
+.nav a:hover{
+    background:#0f172a;
+    color:var(--cyan);
+}
+
+.main{
+    margin-left:260px;
+    width:calc(100% - 260px);
+    padding:25px;
+}
+
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
     margin-bottom:25px;
 }
 
-.header h1{
-    color:#00e5ff;
-    font-size:2.5rem;
+.title{
+    font-size:30px;
+    font-family:Orbitron;
+    color:var(--cyan);
 }
 
-.header p{
-    color:#8b949e;
+.status{
+    padding:10px 18px;
+    border-radius:50px;
+    background:#052e16;
+    color:var(--green);
+    font-weight:600;
 }
 
 .cards{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:15px;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
     margin-bottom:25px;
 }
 
 .card{
-    background:#161b22;
+    background:rgba(15,23,42,.7);
+    backdrop-filter:blur(10px);
+    border:1px solid var(--border);
+    border-radius:18px;
     padding:20px;
-    border-radius:12px;
-    border-left:5px solid #00e5ff;
 }
 
-.card h3{
-    color:#8b949e;
-    margin-bottom:10px;
+.card h4{
+    color:#94a3b8;
 }
 
-.card h2{
-    color:#00e5ff;
+.card h1{
+    margin-top:10px;
+    color:var(--cyan);
 }
 
-.section{
-    background:#161b22;
+.grid{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:20px;
+}
+
+.panel{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:18px;
     padding:20px;
-    border-radius:12px;
-    margin-bottom:20px;
 }
 
-.section h2{
+.panel-title{
+    color:var(--cyan);
     margin-bottom:15px;
-    color:#00e5ff;
+    font-size:18px;
 }
 
 table{
@@ -74,207 +141,233 @@ table{
 }
 
 th{
-    background:#21262d;
+    background:#111827;
     padding:12px;
+    text-align:left;
 }
 
 td{
-    padding:10px;
-    border-bottom:1px solid #30363d;
-    text-align:center;
+    padding:12px;
+    border-bottom:1px solid #1e293b;
 }
 
 .alert{
-    padding:12px;
+    padding:15px;
+    border-radius:12px;
     margin-bottom:10px;
-    border-radius:8px;
-    font-weight:bold;
+    font-weight:600;
+}
+
+.critical{
+    background:#450a0a;
+    border-left:4px solid var(--red);
 }
 
 .high{
-    background:#7f1d1d;
+    background:#431407;
+    border-left:4px solid var(--orange);
 }
 
 .medium{
-    background:#854d0e;
+    background:#422006;
+    border-left:4px solid var(--yellow);
 }
 
-.low{
-    background:#1e3a8a;
+.terminal{
+    margin-top:20px;
+    background:black;
+    color:#00ff7f;
+    padding:15px;
+    border-radius:15px;
+    font-family:monospace;
+    height:220px;
+    overflow:auto;
 }
 
-.trinetra{
+.terminal p{
+    margin-bottom:6px;
+}
+
+.eye-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:15px;
+    gap:20px;
+    margin-top:25px;
 }
 
 .eye{
-    background:#21262d;
-    padding:20px;
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:15px;
     text-align:center;
-    border-radius:10px;
+    padding:20px;
 }
 
 .eye h3{
-    color:#00e5ff;
+    color:var(--cyan);
     margin-bottom:10px;
 }
 
-.status{
-    color:#22c55e;
+.online{
+    color:var(--green);
     font-weight:bold;
-    font-style:italic;
 }
+
+@media(max-width:1200px){
+    .cards{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    .eye-grid{
+        grid-template-columns:1fr;
+    }
+}
+
 </style>
 </head>
 <body>
 
-<div class="header">
-    <h1>🔱 TRINETRA IDS</h1>
-    <p>Real-Time Intrusion Detection System</p>
-</div>
+<div class="sidebar">
 
-<div class="cards">
+    <div class="logo">🔱 TRINETRA</div>
 
-    <div class="card">
-        <h3>Total Packets</h3>
-        <h2>12,548</h2>
-    </div>
-
-    <div class="card">
-        <h3>TCP Packets</h3>
-        <h2>8,123</h2>
-    </div>
-
-    <div class="card">
-        <h3>UDP Packets</h3>
-        <h2>2,431</h2>
-    </div>
-
-    <div class="card">
-        <h3>Alerts</h3>
-        <h2>17</h2>
+    <div class="nav">
+        <a href="#">Dashboard</a>
+        <a href="#">Alerts</a>
+        <a href="#">Live Traffic</a>
+        <a href="#">Threat Intel</a>
+        <a href="#">Reports</a>
+        <a href="#">Settings</a>
     </div>
 
 </div>
 
-<div class="section">
-    <h2>🔱 Three Eyes of Trinetra</h2>
+<div class="main">
 
-    <div class="trinetra">
+    <div class="topbar">
+        <div class="title">Intrusion Detection System</div>
+        <div class="status">● ACTIVE</div>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <h4>Threats Detected</h4>
+            <h1>03</h1>
+        </div>
+
+        <div class="card">
+            <h4>Alerts</h4>
+            <h1>17</h1>
+        </div>
+
+        <div class="card">
+            <h4>Hosts Monitored</h4>
+            <h1>42</h1>
+        </div>
+
+        <div class="card">
+            <h4>Packets/sec</h4>
+            <h1>8243</h1>
+        </div>
+
+    </div>
+
+    <div class="grid">
+
+        <div class="panel">
+
+            <div class="panel-title">Live Security Events</div>
+
+            <table>
+
+                <tr>
+                    <th>Time</th>
+                    <th>Severity</th>
+                    <th>Rule</th>
+                    <th>Source</th>
+                    <th>Description</th>
+                </tr>
+
+                <tr>
+                    <td>14:02:11</td>
+                    <td style="color:#fb923c;">HIGH</td>
+                    <td>TRI-003</td>
+                    <td>192.168.1.15</td>
+                    <td>Port Scan Detected</td>
+                </tr>
+
+                <tr>
+                    <td>14:02:05</td>
+                    <td style="color:#facc15;">MEDIUM</td>
+                    <td>TRI-002</td>
+                    <td>10.0.0.15</td>
+                    <td>Excessive SYN Traffic</td>
+                </tr>
+
+            </table>
+
+            <div class="terminal">
+
+                <p>[14:25:01] TCP 192.168.1.10 → 8.8.8.8</p>
+                <p>[14:25:02] DNS Query github.com</p>
+                <p>[14:25:03] ALERT TRI-003 Port Scan</p>
+                <p>[14:25:04] UDP 10.0.0.15 → 1.1.1.1</p>
+                <p>[14:25:05] SSH Activity Detected</p>
+
+            </div>
+
+        </div>
+
+        <div class="panel">
+
+            <div class="panel-title">Threat Queue</div>
+
+            <div class="alert critical">
+                🔴 TRI-004 DNS Tunneling Suspected
+            </div>
+
+            <div class="alert high">
+                🟠 TRI-003 Port Scan Detected
+            </div>
+
+            <div class="alert medium">
+                🟡 TRI-002 Excessive SYN Packets
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="eye-grid">
 
         <div class="eye">
-            <h3>Eye 1</h3>
-            <p>Packet Capture</p>
-            <p class="status">ACTIVE</p>
+            <h3>👁 Capture Engine</h3>
+            <p>Packet Collection</p>
+            <br>
+            <span class="online">ONLINE</span>
         </div>
 
         <div class="eye">
-            <h3>Eye 2</h3>
-            <p>Traffic Analysis</p>
-            <p class="status">ACTIVE</p>
+            <h3>👁 Analysis Engine</h3>
+            <p>Traffic Inspection</p>
+            <br>
+            <span class="online">ONLINE</span>
         </div>
 
         <div class="eye">
-            <h3>Eye 3</h3>
+            <h3>👁 Detection Engine</h3>
             <p>Threat Detection</p>
-            <p class="status">ACTIVE</p>
+            <br>
+            <span class="online">ONLINE</span>
         </div>
 
     </div>
-</div>
 
-<div class="section">
-    <h2>📡 Live Traffic Monitor</h2>
-
-    <table>
-        <thead>
-        <tr>
-            <th>Time</th>
-            <th>Source IP</th>
-            <th>Destination IP</th>
-            <th>Protocol</th>
-            <th>Service</th>
-        </tr>
-        </thead>
-
-        <tbody>
-
-        <tr>
-            <td>12:01:03</td>
-            <td>192.168.1.100</td>
-            <td>142.250.182.14</td>
-            <td>TCP</td>
-            <td>HTTPS</td>
-        </tr>
-
-        <tr>
-            <td>12:01:08</td>
-            <td>192.168.1.100</td>
-            <td>8.8.8.8</td>
-            <td>UDP</td>
-            <td>DNS</td>
-        </tr>
-
-        <tr>
-            <td>12:01:15</td>
-            <td>10.0.0.5</td>
-            <td>192.168.1.1</td>
-            <td>ICMP</td>
-            <td>-</td>
-        </tr>
-
-        </tbody>
-    </table>
-</div>
-
-<div class="section">
-    <h2>🚨 Security Alerts</h2>
-
-    <div class="alert high">
-        HIGH - Potential Port Scan Detected
-    </div>
-
-    <div class="alert medium">
-        MEDIUM - Excessive SYN Traffic
-    </div>
-
-    <div class="alert low">
-        LOW - SSH Activity Observed
-    </div>
-
-</div>
-
-<div class="section">
-    <h2>📊 Protocol Statistics</h2>
-
-    <table>
-        <thead>
-        <tr>
-            <th>Protocol</th>
-            <th>Count</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        <tr>
-            <td>TCP</td>
-            <td>8123</td>
-        </tr>
-
-        <tr>
-            <td>UDP</td>
-            <td>2431</td>
-        </tr>
-
-        <tr>
-            <td>ICMP</td>
-            <td>1994</td>
-        </tr>
-        </tbody>
-
-    </table>
 </div>
 
 </body>
