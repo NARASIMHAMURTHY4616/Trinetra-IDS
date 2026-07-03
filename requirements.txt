@@ -1,6 +1,5 @@
 flask
 scapy
-streamlit_autorefresh
 collections
 json
 threading
