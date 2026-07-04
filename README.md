@@ -1,5 +1,8 @@
 # 🔱 Trinetra IDS
 
+
+
+
 Trinetra IDS is a modular Network Intrusion Detection System (IDS) designed to capture, analyze, and inspect network traffic in real time. Built with extensibility in mind, Trinetra provides a foundation for protocol analysis, threat detection, alert generation, and future AI-assisted security analytics. 
 
 
