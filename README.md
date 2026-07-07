@@ -13,6 +13,8 @@ Trinetra IDS observes, analyzes, and reveals hidden threats within network traff
 
 ## 🚀 Features
 
+
+
 - Real-time packet capture using Scapy
 - IPv4 and IPv6 support
 - TCP, UDP, ICMP, and DNS traffic analysis
