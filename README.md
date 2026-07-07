@@ -22,7 +22,7 @@ Trinetra IDS observes, analyzes, and reveals hidden threats within network traff
 - Alert generation framework
 - Dashboard-ready packet storage
 - Extensible design for ML and AI integration
-
+- Ui of the latest 500 packets
 ---
 
 ## 📊 Packet Information Collected
