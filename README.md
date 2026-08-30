@@ -234,7 +234,7 @@ This project is intended solely for educational, research, and authorized securi
 
 ---
 
-note if you make an ai agent  that includes ids system the must be careful while developing and deployment your dataay be cross
+>> note if you make an ai agent  that includes ids system the must be careful while developing and deployment your dataay be cross
 
 ## ⭐ Support
 
